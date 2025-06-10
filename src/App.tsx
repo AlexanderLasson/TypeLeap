@@ -28,7 +28,7 @@ const GeneratedWords = ({ words }: {words: string}) => {
     <div className="text-4xl text-center text-slate-500 ">typeLeap {words}</div>
   )
 }
-// 10:24 into vide :TODO
+
 const CountDownTimer = ({timeLeft}: {timeLeft: number }) => {
   return <h2 className="text-primary-500 font-medium text-center text-xl text-slate-600"> Time: {timeLeft}</h2>;
 }
