@@ -1,7 +1,7 @@
 import { fakerDE as faker } from '@faker-js/faker';
 import RestartButton from './components/RestartButton';
 import Results from './components/Results';
-
+  
 const words = faker.lorem.words(10);
 
 const App = () => {
@@ -23,9 +23,10 @@ const App = () => {
   );
 };
 
+
 const GeneratedWords = ({ words }: {words: string}) => {
   return (
-    <div className="text-4xl text-center text-slate-500 ">typeLeap {words}</div>
+    <div className="text-4xl text-center text-slate-500 ">{words}</div>
   )
 }
 
