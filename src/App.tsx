@@ -2,13 +2,19 @@ import { fakerDE as faker } from '@faker-js/faker';
 import RestartButton from './components/RestartButton';
 import Results from './components/Results';
 import UserTypings from './components/UserTypings';
+import useEngine from './hooks/useEngine';
+
 
 const words = faker.lorem.words(10);
 // main app component 
 const App = () => {
+
+const {state, words, timeLeft} = useEngine();
+
+
   return (
     <>
-      <CountDownTimer timeLeft={30} />
+      <CountDownTimer timeLeft={timeLeft} />
       <WordsContainer>
         <GeneratedWords words={words} />
         <UserTypings className="absolute inset-0" userInput={"test"} />
