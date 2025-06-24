@@ -36,12 +36,29 @@ const useTypings = (enabled: boolean) => {
     [cursor, enabled]
   );
 
+const clearTyped = useCallback(() => {
+setTyped("");
+setCursor(0);
+  }, []);
+
+const resestTotalTyped = useCallback(() => {
+totalTyped.current = 0;
+  }, []);
+
+
   useEffect(() => {
     window.addEventListener("keydown", keydownHandler);
     return () => {
       window.removeEventListener("keydown", keydownHandler);
     };
   }, [keydownHandler]);
+  return {
+    typed,
+    cursor,
+    clearTyped,
+    resestTotalTyped,
+    totalTyped: totalTyped.current,
+  }
 };
 
 export default useTypings;
