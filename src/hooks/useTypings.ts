@@ -41,7 +41,7 @@ setTyped("");
 setCursor(0);
   }, []);
 
-const resestTotalTyped = useCallback(() => {
+const resetTotalTyped = useCallback(() => {
 totalTyped.current = 0;
   }, []);
 
@@ -56,7 +56,7 @@ totalTyped.current = 0;
     typed,
     cursor,
     clearTyped,
-    resestTotalTyped,
+    resetTotalTyped: resetTotalTyped,
     totalTyped: totalTyped.current,
   }
 };

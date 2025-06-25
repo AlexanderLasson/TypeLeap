@@ -17,7 +17,7 @@ const useEngine = () => {
   const { typed, cursor, clearTyped, resetTotalTyped: resetTotalTyped, totalTyped } = useTypings(state !== "finish");
 
 
-  const [errors, setErros] = useState(0);
+  const [errors, setErrors] = useState(0);
 
   const isStarting = state === "start" && cursor > 0;
   const areWordsFinished = cursor === words.length;
@@ -66,6 +66,10 @@ const useEngine = () => {
     console.log("Restarting...");
     resetCountdown();
     resetTotalTyped();
+    setState("start");
+    setErrors(0);
+    updateWords();
+    clearTyped();
   }, [clearTyped, updateWords, resetCountdown, resetTotalTyped]);
 
   return { state, words, timeLeft, typed, errors, totalTyped, restart };

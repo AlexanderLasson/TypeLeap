@@ -17,7 +17,8 @@ const RestartButton = ({
 
   return (
     <button
-      onClick={handleRestart}
+      onClick={handleClick}
+      ref={buttonRef}
       className={`block rounded px-8 py-2 hover:bg-slate-700/50 ${className}`}
     >
       <MdRefresh className="w-6 h-6" />
