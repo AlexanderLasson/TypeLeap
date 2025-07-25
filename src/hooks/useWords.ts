@@ -2,7 +2,14 @@ import { faker } from "@faker-js/faker";
 import { useCallback, useState } from "react";
 
 const generateWords = (count: number) => {
-  return faker.word.words(count).toLowerCase();
+
+  let faker_words = faker.word.words(count).toLowerCase();
+  faker_words =  faker_words.replace(/-/g, "");
+  if (faker_words.includes("-")) {
+  console.log("Has a -!");
+  }
+
+  return faker_words
 }
 
 const useWords = (count:number) => {
