@@ -34,7 +34,7 @@ const {state, words, timeLeft, typed, errors, restart, totalTyped } = useEngine(
 
 const WordsContainer = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="relative text-3xl max-w-xl leading-relaxed break-all mt-3">
+    <div className="relative text-3xl max-w-4xl leading-relaxed break-all mt-3">
       {children}
     </div>
   )
