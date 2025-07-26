@@ -4,12 +4,14 @@ import Results from './components/Results';
 import UserTypings from './components/UserTypings';
 import Frog from './components/Frog';
 import Leaderboard from './components/Leaderboard';
+import TypingBenefits from './components/TypingBenefits';
 import useEngine from './hooks/useEngine';
 import { calculatAccuracyPercentage } from './utils/helpers';
 import { calculateWPM, calculateTimeElapsed } from './utils/wpmCalculator';
 
 const App = () => {
   const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [showBenefits, setShowBenefits] = useState(false);
   const [finalWpm, setFinalWpm] = useState(0);
   const [finalAccuracy, setFinalAccuracy] = useState(0);
   const {state, words, timeLeft, typed, errors, restart, totalTyped, shouldHop, resetHop } = useEngine();
@@ -70,8 +72,32 @@ const App = () => {
         userWpm={finalWpm}
         userAccuracy={finalAccuracy}
       />
+      <TypingBenefits
+        isVisible={showBenefits}
+        onClose={() => setShowBenefits(false)}
+      />
       
-      <div className="fixed bottom-6 right-6">
+      {/* Bottom Right Links */}
+      <div className="fixed bottom-6 right-6 flex gap-3">
+        <button
+          onClick={() => setShowBenefits(true)}
+          className={`text-gray-400 hover:text-gray-600 transition-colors duration-200 ${
+            state === "run" ? "opacity-60" : ""
+          }`}
+        >
+          <svg
+            className="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              fillRule="evenodd"
+              d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
         <a
           href="https://github.com/AlexanderLasson"
           target="_blank"
