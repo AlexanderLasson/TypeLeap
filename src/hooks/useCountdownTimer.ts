@@ -2,12 +2,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const useCountdownTimer = (seconds: number) => {
   const [timeLeft, setTimeLeft] = useState(seconds);
-  const intervalRef = useRef<NodeJS.Timer | null>(null);
+  const intervalRef = useRef<number | null>(null);
 
   const startCountdown = useCallback(() => {
     console.log("Starting countdown");
 
-    intervalRef.current = setInterval(() => {
+    intervalRef.current = window.setInterval(() => {
       setTimeLeft((timeLeft) => timeLeft - 1);
     }, 1000);
   }, [setTimeLeft]);
@@ -16,7 +16,7 @@ const useCountdownTimer = (seconds: number) => {
     console.log("Resetting countdown");
 
     if (intervalRef.current) {
-      clearInterval(intervalRef.current);
+      window.clearInterval(intervalRef.current);
     }
 
     setTimeLeft(seconds);
@@ -25,7 +25,7 @@ const useCountdownTimer = (seconds: number) => {
 useEffect(() => {
   if(!timeLeft && intervalRef.current) {
   console.log("clearing timer...)");
-  clearInterval(intervalRef.current);
+  window.clearInterval(intervalRef.current);
   }
 }, [timeLeft, intervalRef]);
 

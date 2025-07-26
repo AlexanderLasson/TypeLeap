@@ -7,7 +7,6 @@ interface FrogProps {
 
 const Frog = ({ isHopping, onHopComplete }: FrogProps) => {
   const [position, setPosition] = useState({ x: -100, y: 0 });
-  const [isVisible, setIsVisible] = useState(true);
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
@@ -41,7 +40,6 @@ const Frog = ({ isHopping, onHopComplete }: FrogProps) => {
         const hopProgress = (progress * numHops) % 1;
         
         const startX = -100 + hopIndex * hopDistance;
-        const endX = startX + hopDistance;
         const currentX = startX + hopDistance * hopProgress;
         
         const hopHeight = 40;
