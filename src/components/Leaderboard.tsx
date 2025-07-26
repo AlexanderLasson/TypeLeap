@@ -73,7 +73,7 @@ const Leaderboard = ({ isVisible, onClose, userWpm, userAccuracy }: LeaderboardP
               alt="Frog"
               className="w-8 h-8"
             />
-            <h2 className="text-2xl font-bold text-gray-800">Leaderboard</h2>
+            <h2 className="text-2xl font-bold text-gray-800">TypeLeap Leaderboard</h2>
           </div>
           <button
             onClick={onClose}

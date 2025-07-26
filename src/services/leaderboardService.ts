@@ -13,6 +13,16 @@ export const leaderboardService = {
   // Add a new score to the leaderboard
   async addScore(entry: Omit<LeaderboardEntry, 'id' | 'timestamp'>): Promise<void> {
     try {
+      // Reject scores with accuracy below 50% to prevent spam
+      if (entry.accuracy < 50) {
+        throw new Error('Accuracy too low. Please improve your typing accuracy.');
+      }
+      
+      // Reject scores with WPM below 10 to prevent spam
+      if (entry.wpm < 10) {
+        throw new Error('WPM too low. Please improve your typing speed.');
+      }
+      
       await addDoc(collection(db, 'leaderboard'), {
         ...entry,
         timestamp: new Date()

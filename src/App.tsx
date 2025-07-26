@@ -19,7 +19,7 @@ const App = () => {
 
   const accuracyPercentage = calculatAccuracyPercentage(errors, totalTyped);
   const timeElapsed = calculateTimeElapsed(timeLeft, 30); // 30 seconds is the total time
-  const wpm = calculateWPM(totalTyped, timeElapsed);
+  const wpm = calculateWPM(totalTyped, timeElapsed, errors);
 
   // Store final values when test finishes
   useEffect(() => {
@@ -99,7 +99,7 @@ const App = () => {
           </svg>
         </button>
         <a
-          href="https://github.com/AlexanderLasson"
+          href="https://github.com/AlexanderLasson/TypeLeap"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
