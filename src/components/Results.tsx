@@ -7,12 +7,14 @@ const Results = ({
   errors,
   accuracyPercentage,
   total,
+  wpm,
   className,
 }:{
     state: State;
     errors: number;
     accuracyPercentage: number;
     total: number;
+    wpm: number;
     className?: string;
   }) => {
   const initial = { opacity: 0 };
@@ -42,18 +44,25 @@ const Results = ({
       animate={animate}
       transition={{ ...duration, delay: 0.5}}
     >
-    Accuracy: {accuracyPercentage}
+    WPM: {wpm}
     </motion.li>
     <motion.li
       initial={initial}
       animate={animate}
       transition={{ ...duration, delay: 1}}
-      className="text-red-500">Errors : {errors}
+    >
+    Accuracy: {accuracyPercentage}
     </motion.li>
     <motion.li
       initial={initial}
       animate={animate}
       transition={{ ...duration, delay: 1.5}}
+      className="text-red-500">Errors : {errors}
+    </motion.li>
+    <motion.li
+      initial={initial}
+      animate={animate}
+      transition={{ ...duration, delay: 2}}
     >
     Typed: {total}
     </motion.li>
