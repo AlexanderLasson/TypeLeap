@@ -15,6 +15,7 @@ const useTypings = (enabled: boolean) => {
   const [cursor, setCursor] = useState(0);
   const [typed, setTyped] = useState<string>("");
   const totalTyped = useRef(0);
+  const [shouldHop, setShouldHop] = useState(false);
 
   const keydownHandler = useCallback(
     ({ key, code }: KeyboardEvent) => {
@@ -26,6 +27,12 @@ const useTypings = (enabled: boolean) => {
           setTyped((prev) => prev.slice(0, -1));
           setCursor(cursor - 1);
           totalTyped.current -= 1;
+          break;
+        case " ":
+          setTyped((prev) => prev.concat(key));
+          setCursor(cursor + 1);
+          totalTyped.current += 1;
+          setShouldHop(true);
           break;
         default:
           setTyped((prev) => prev.concat(key));
@@ -45,6 +52,10 @@ const resetTotalTyped = useCallback(() => {
 totalTyped.current = 0;
   }, []);
 
+const resetHop = useCallback(() => {
+  setShouldHop(false);
+}, []);
+
 
   useEffect(() => {
     window.addEventListener("keydown", keydownHandler);
@@ -58,6 +69,8 @@ totalTyped.current = 0;
     clearTyped,
     resetTotalTyped: resetTotalTyped,
     totalTyped: totalTyped.current,
+    shouldHop,
+    resetHop,
   }
 };
 

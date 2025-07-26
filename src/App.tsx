@@ -1,12 +1,13 @@
 import RestartButton from './components/RestartButton';
 import Results from './components/Results';
 import UserTypings from './components/UserTypings';
+import Frog from './components/Frog';
 import useEngine from './hooks/useEngine';
 import { calculatAccuracyPercentage } from './utils/helpers';
 
 const App = () => {
 
-const {state, words, timeLeft, typed, errors, restart, totalTyped } = useEngine();
+const {state, words, timeLeft, typed, errors, restart, totalTyped, shouldHop, resetHop } = useEngine();
 
 
   return (
@@ -27,6 +28,7 @@ const {state, words, timeLeft, typed, errors, restart, totalTyped } = useEngine(
         accuracyPercentage={calculatAccuracyPercentage(errors, totalTyped)}
         total={totalTyped}
       />
+      <Frog isHopping={shouldHop} onHopComplete={resetHop} />
     </>
   );
 };
