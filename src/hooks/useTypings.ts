@@ -54,7 +54,7 @@ totalTyped.current = 0;
 
 const resetHop = useCallback(() => {
   setShouldHop(false);
-}, []);
+  }, []);
 
 
   useEffect(() => {
