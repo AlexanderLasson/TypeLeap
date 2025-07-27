@@ -9,8 +9,6 @@ const isKeyboardCodeAllowed = (code: string) => {
   );
 };
 
-
-
 const useTypings = (enabled: boolean) => {
   const [cursor, setCursor] = useState(0);
   const [typed, setTyped] = useState<string>("");
@@ -25,37 +23,36 @@ const useTypings = (enabled: boolean) => {
       switch (key) {
         case "Backspace":
           setTyped((prev) => prev.slice(0, -1));
-          setCursor(cursor - 1);
-          totalTyped.current -= 1;
+          setCursor((prev) => Math.max(0, prev - 1));
+          // Don't decrement totalTyped for backspace - it should only count forward progress
           break;
         case " ":
           setTyped((prev) => prev.concat(key));
-          setCursor(cursor + 1);
+          setCursor((prev) => prev + 1);
           totalTyped.current += 1;
           setShouldHop(true);
           break;
         default:
           setTyped((prev) => prev.concat(key));
-          setCursor(cursor + 1);
+          setCursor((prev) => prev + 1);
           totalTyped.current += 1;
       }
     },
-    [cursor, enabled]
+    [enabled]
   );
 
-const clearTyped = useCallback(() => {
-setTyped("");
-setCursor(0);
+  const clearTyped = useCallback(() => {
+    setTyped("");
+    setCursor(0);
   }, []);
 
-const resetTotalTyped = useCallback(() => {
-totalTyped.current = 0;
+  const resetTotalTyped = useCallback(() => {
+    totalTyped.current = 0;
   }, []);
 
-const resetHop = useCallback(() => {
-  setShouldHop(false);
+  const resetHop = useCallback(() => {
+    setShouldHop(false);
   }, []);
-
 
   useEffect(() => {
     window.addEventListener("keydown", keydownHandler);
@@ -63,6 +60,7 @@ const resetHop = useCallback(() => {
       window.removeEventListener("keydown", keydownHandler);
     };
   }, [keydownHandler]);
+
   return {
     typed,
     cursor,

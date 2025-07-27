@@ -12,7 +12,7 @@ const TypingBenefits = ({ isVisible, onClose }: TypingBenefitsProps) => {
     {
       title: "Productivity Boost", 
       icon: "⚡",
-      description: "Faster typing means more work completed in less time. Every minute saved adds up to hours of increased productivity. Just like a frog catching flies - the faster you are, the more you catch!",
+      description: "Faster typing means more work completed in less time. Every minute saved adds up to hours of increased productivity.",
       stats: "Typists with 60+ WPM are 40% more productive than those typing at 30 WPM.",
       tips: [
         "Practice regularly for 15-20 minutes daily",
