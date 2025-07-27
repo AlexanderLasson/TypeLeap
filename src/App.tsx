@@ -18,26 +18,15 @@ const App = () => {
   const {state, words, timeLeft, typed, errors, restart, totalTyped, shouldHop, resetHop } = useEngine();
   const accuracyPercentage = calculatAccuracyPercentage(errors, totalTyped);
   const timeElapsed = calculateTimeElapsed(timeLeft, 30); // 30 seconds is the total time
-  //const wpm = calculateWPM(totalTyped, timeElapsed, errors);
+  const wpm = calculateWPM(totalTyped, timeElapsed, errors);
 
   // Store final values when test finishes
   useEffect(() => {
     if (state === "finish") {
-      // Calculate final WPM with the actual time elapsed (30 seconds when finished)
-      const finalTimeElapsed = 30; // When finished, full 30 seconds have elapsed
-      const finalWpmValue = calculateWPM(totalTyped, finalTimeElapsed, errors);
-      
-      console.log('Final WPM calculation:', {
-        totalTyped,
-        timeElapsed: finalTimeElapsed,
-        errors,
-        calculatedWpm: finalWpmValue
-      });
-      
-      setFinalWpm(finalWpmValue);
+      setFinalWpm(wpm);
       setFinalAccuracy(accuracyPercentage);
     }
-  }, [state, totalTyped, errors, accuracyPercentage]);
+  }, [state, wpm, accuracyPercentage]);
 
   // user starts typing
   useEffect(() => {
