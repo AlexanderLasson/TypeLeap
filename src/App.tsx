@@ -14,6 +14,7 @@ const App = () => {
   const [showBenefits, setShowBenefits] = useState(false);
   const [finalWpm, setFinalWpm] = useState(0);
   const [finalAccuracy, setFinalAccuracy] = useState(0);
+  const [isTyping, setIsTyping] = useState(false);
   const {state, words, timeLeft, typed, errors, restart, totalTyped, shouldHop, resetHop } = useEngine();
   const accuracyPercentage = calculatAccuracyPercentage(errors, totalTyped);
   const timeElapsed = calculateTimeElapsed(timeLeft, 30); // 30 seconds is the total time
@@ -27,8 +28,28 @@ const App = () => {
     }
   }, [state, wpm, accuracyPercentage]);
 
+  // Detect when user starts typing
+  useEffect(() => {
+    // Only consider it "not typing" if the game hasn't started or if we're at the very beginning
+    if (state === "start" && totalTyped === 0) {
+      setIsTyping(false);
+    } else if (state === "run" || state === "finish") {
+      // Once the game is running or finished, keep the dark background
+      setIsTyping(true);
+    }
+  }, [state, totalTyped]);
+
   return (
     <>
+      {/* Background elements */}
+      <div className="water-ripple"></div>
+      <div className={`typing-overlay ${isTyping ? 'active' : ''}`}></div>
+      
+      {/* Floating particles */}
+      {Array.from({ length: 9 }, (_, i) => (
+        <div key={i} className="floating-particle"></div>
+      ))}
+
       <CountDownTimer timeLeft={timeLeft} />
       <WordsContainer>
         <GeneratedWords words={words} />
