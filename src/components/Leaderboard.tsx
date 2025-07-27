@@ -137,25 +137,68 @@ const Leaderboard = ({ isVisible, onClose, userWpm, userAccuracy }: LeaderboardP
               <p className="text-gray-500 text-center py-4">No scores yet. Be the first!</p>
             ) : (
               <div className="space-y-2">
-                {scores.map((score, index) => (
-                  <div
-                    key={score.id}
-                    className="flex justify-between items-center p-2 bg-gray-50 rounded"
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className="font-bold text-gray-600 w-6">
-                        {index + 1}
-                      </span>
-                      <span className="font-medium">{score.name}</span>
-                    </div>
-                    <div className="text-right">
-                      <div className="font-bold text-lg">{score.wpm} WPM</div>
-                      <div className="text-sm text-gray-500">
-                        {score.accuracy.toFixed(1)}% accuracy
+                {scores.map((score, index) => {
+                  const isTopThree = index < 3;
+                  const getPositionStyle = () => {
+                    switch (index) {
+                      case 0: // 1st place for rank system
+                        return {
+                          bg: "bg-gradient-to-r from-yellow-100 to-yellow-200 border-yellow-300",
+                          icon: "👑🐸👑",
+                          rank: "🥇"
+                        };
+                      case 1: // 2nd place
+                        return {
+                          bg: "bg-gradient-to-r from-gray-100 to-gray-300 border-gray-400",
+                          icon: "🐸",
+                          rank: "🥈"
+                        };
+                      case 2: // 3rd place
+                        return {
+                          bg: "bg-gradient-to-r from-orange-100 to-orange-200 border-orange-300",
+                          icon: "🐸",
+                          rank: "🥉"
+                        };
+                      default:
+                        return {
+                          bg: "bg-gray-50",
+                          icon: "",
+                          rank: `${index + 1}`
+                        };
+                    }
+                  };
+
+                  const positionStyle = getPositionStyle();
+
+                  return (
+                    <div
+                      key={score.id}
+                      className={`flex justify-between items-center p-3 rounded border-2 ${positionStyle.bg} ${
+                        isTopThree ? 'shadow-md transform scale-105' : ''
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
+                          <span className="text-2xl">{positionStyle.rank}</span>
+                          {isTopThree && (
+                            <span className="text-xl">{positionStyle.icon}</span>
+                          )}
+                        </div>
+                        <span className={`font-medium ${isTopThree ? 'text-lg' : ''}`}>
+                          {score.name}
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <div className={`font-bold ${isTopThree ? 'text-xl' : 'text-lg'}`}>
+                          {score.wpm} WPM
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {score.accuracy.toFixed(1)}% accuracy
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
