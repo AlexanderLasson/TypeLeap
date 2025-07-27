@@ -18,7 +18,7 @@ const App = () => {
   const {state, words, timeLeft, typed, errors, restart, totalTyped, shouldHop, resetHop } = useEngine();
   const accuracyPercentage = calculatAccuracyPercentage(errors, totalTyped);
   const timeElapsed = calculateTimeElapsed(timeLeft, 30); // 30 seconds is the total time
-  const wpm = calculateWPM(totalTyped, timeElapsed, errors);
+  //const wpm = calculateWPM(totalTyped, timeElapsed, errors);
 
   // Store final values when test finishes
   useEffect(() => {
