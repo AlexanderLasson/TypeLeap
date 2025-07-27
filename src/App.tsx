@@ -23,12 +23,23 @@ const App = () => {
   // Store final values when test finishes
   useEffect(() => {
     if (state === "finish") {
-      setFinalWpm(wpm);
+      // Calculate final WPM with the actual time elapsed (30 seconds when finished)
+      const finalTimeElapsed = 30; // When finished, full 30 seconds have elapsed
+      const finalWpmValue = calculateWPM(totalTyped, finalTimeElapsed, errors);
+      
+      console.log('Final WPM calculation:', {
+        totalTyped,
+        timeElapsed: finalTimeElapsed,
+        errors,
+        calculatedWpm: finalWpmValue
+      });
+      
+      setFinalWpm(finalWpmValue);
       setFinalAccuracy(accuracyPercentage);
     }
-  }, [state, wpm, accuracyPercentage]);
+  }, [state, totalTyped, errors, accuracyPercentage]);
 
-  // Detect when user starts typing
+  // user starts typing
   useEffect(() => {
     // Only consider it "not typing" if the game hasn't started or if we're at the very beginning
     if (state === "start" && totalTyped === 0) {
