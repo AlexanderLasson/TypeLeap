@@ -15,8 +15,6 @@ const App = () => {
   const [finalWpm, setFinalWpm] = useState(0);
   const [finalAccuracy, setFinalAccuracy] = useState(0);
   const {state, words, timeLeft, typed, errors, restart, totalTyped, shouldHop, resetHop } = useEngine();
-
-
   const accuracyPercentage = calculatAccuracyPercentage(errors, totalTyped);
   const timeElapsed = calculateTimeElapsed(timeLeft, 30); // 30 seconds is the total time
   const wpm = calculateWPM(totalTyped, timeElapsed, errors);
@@ -125,7 +123,7 @@ const App = () => {
 
 const WordsContainer = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="relative text-3xl max-w-4xl leading-relaxed break-all mt-3">
+    <div className="relative text-3xl max-w-4xl leading-relaxed whitespace-nowrap mt-3">
       {children}
     </div>
   )

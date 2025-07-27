@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 export type State = "start" | "run" | "finish";
 
-const NUMBER_OF_WORDS = 12;
+const NUMBER_OF_WORDS = 6;
 const COUNTDOWN_SECONDS = 30;
 
 const useEngine = () => {

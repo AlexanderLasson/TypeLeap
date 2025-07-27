@@ -12,7 +12,7 @@ const TypingBenefits = ({ isVisible, onClose }: TypingBenefitsProps) => {
     {
       title: "Productivity Boost", 
       icon: "⚡",
-      description: "Faster typing means more work completed in less time. Every minute saved adds up to hours of increased productivity.",
+      description: "Faster typing means more work completed in less time. Every minute saved adds up to hours of increased productivity. Just like a frog catching flies - the faster you are, the more you catch!",
       stats: "Typists with 60+ WPM are 40% more productive than those typing at 30 WPM.",
       tips: [
         "Practice regularly for 15-20 minutes daily",
@@ -20,28 +20,17 @@ const TypingBenefits = ({ isVisible, onClose }: TypingBenefitsProps) => {
         "Use proper finger placement on home row keys"
       ]
     },
-    {
-      title: "Career Advantages",
-      icon: "💼",
-      description: "Strong typing skills are essential in today's digital workplace and can give you a competitive edge in job applications.",
-      stats: "85% of jobs require computer skills, with typing being fundamental.",
-      tips: [
-        "Many employers test typing speed during interviews",
-        "Higher WPM can lead to better job opportunities",
-        "Remote work heavily relies on efficient typing"
-      ]
-    },
-    {
-      title: "Cognitive Benefits",
-      icon: "🧠",
-      description: "Touch typing improves brain function, memory, and reduces mental fatigue by automating the typing process.",
-      stats: "Touch typists experience 50% less mental strain compared to hunt-and-peck typists.",
-      tips: [
-        "Touch typing frees up mental resources for thinking",
-        "Reduces eye strain and improves focus",
-        "Builds muscle memory for better retention"
-      ]
-    },
+{
+  title: "Frog Jokes",
+  icon: "🐸☕️",
+  description: "Here are some Frog jokes. I apologize in advance..",
+  stats: "Jokes make an office space all the more better.",
+  tips: [
+    "What do frogs and coders have in common? Bugs keep them busy. :(",
+    "If a frog parks illegaly, then hes definitely Toad.",
+    "What's a frog's favourite year? A leap year."
+  ]
+}
   ];
 
   if (!isVisible) return null;
@@ -56,7 +45,7 @@ const TypingBenefits = ({ isVisible, onClose }: TypingBenefitsProps) => {
               alt="Frog"
               className="w-8 h-8"
             />
-            <h2 className="text-2xl font-bold text-gray-800">Why Typing Speed Matters</h2>
+            <h2 className="text-2xl font-bold text-gray-800">Typing Speed</h2>
           </div>
           <button
             onClick={onClose}
@@ -107,7 +96,7 @@ const TypingBenefits = ({ isVisible, onClose }: TypingBenefitsProps) => {
           {/* Tips */}
           <div>
             <h4 className="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-              💡 Pro Tips
+              💡 Info
             </h4>
             <ul className="space-y-2">
               {benefits[activeTab].tips.map((tip, index) => (
