@@ -2,6 +2,10 @@
 
 A modern typing speed test built with React and TypeScript. Test your WPM, compete on the leaderboard, and watch a frog hop across the screen as you type.
 
+## 🌐 Live Deployment
+
+🔗 **[typeleap.online](https://typeleap.online/)** — Built using npm run build and deployed via Hostinger's file manager.
+
 ![TypeLeap Main Interface](./screenshots/main.png)
 
 ## Features
@@ -11,13 +15,15 @@ A modern typing speed test built with React and TypeScript. Test your WPM, compe
 - **Global leaderboard** with Firebase integration
 - **Animated frog** that hops with joy (or sadness)
 - **Educational content** about typing benefits
-- **Responsive design** that works on all devices
 
 ### Leaderboard
 ![Leaderboard](./screenshots/board.png)
 
 ### Educational Content
 ![Typing Benefits](./screenshots/info.png)
+
+
+---
 
 ## Stack
 
