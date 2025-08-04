@@ -6,7 +6,7 @@ A modern typing speed test built with React and TypeScript. Test your WPM, compe
 
 🔗 **[typeleap.online](https://typeleap.online/)** — Built using npm run build and deployed via Hostinger's file manager.
 
-![TypeLeap Main Interface](./screenshots/main.png)
+![TypeLeap Main Interface](./screenshots/main.gif)
 
 ## Features
 
